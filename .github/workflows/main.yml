@@ -3,7 +3,6 @@ name: Global workflow to rule them all
 on:
   push:
     branches: [ master ] #or main
-  workflow_dispatch: {} #to enable manual triggering of the action
 
 jobs:
 
@@ -17,7 +16,7 @@ jobs:
         with:
           github_token: ${{ secrets.CUSTOM_TOKEN }}
           #you must specify what pattern to include otherwise all files from the repository will be replicated 
-          patterns_to_include: '.github/workflows'
+          patterns_to_include: '.github/workflows/aws_push.yml'
           #must have, so the workflow do not copy this workflow file to all other repos. It should be only in one, main, .github repo
           patterns_to_ignore: '.github/workflows/main.yml'
 
